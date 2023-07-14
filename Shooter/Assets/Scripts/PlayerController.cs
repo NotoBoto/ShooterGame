@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
         PlayerModel.ShotCooldown = 3f;
         PlayerModel.Lvl = 0;
-        PlayerModel.Experience = 4f;
+        PlayerModel.Experience = 0f;
         PlayerModel.ArrowSpeed = 4f;
         PlayerModel.ArrowDamage = 1f;
         PlayerModel.ArrowPiercing = 1f;
@@ -58,7 +58,7 @@ public class PlayerController : MonoBehaviour
 
             if (Time.time - _lastShotTime >= PlayerModel.ShotCooldown)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButton(0))
                 {
                     Shot();
                     _lastShotTime = Time.time;
@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour
 
     public void CheckNewLvl()
     {
-        if(PlayerModel.Experience >= Mathf.Sqrt(PlayerModel.Lvl)*5 + 5)
+        if(PlayerModel.Experience >= Mathf.Sqrt(PlayerModel.Lvl)*4 + 5)
         {
             PlayerModel.Lvl++;
             PlayerModel.Experience = 0f;
@@ -134,6 +134,7 @@ public class PlayerController : MonoBehaviour
     {
         Cursor.visible = true;
         Canvas.gameObject.SetActive(true);
+        Canvas.transform.Find("Upgrade").gameObject.SetActive(false);
         Canvas.transform.Find("RestartingText").gameObject.SetActive(true);
         Canvas.transform.Find("RestartingText").Find("lvl").gameObject.GetComponent<TextMeshProUGUI>().text = "Your lvl: " + PlayerModel.Lvl;
         Canvas.transform.Find("RestartingText").Find("score").gameObject.GetComponent<TextMeshProUGUI>().text = "Your score: " + PlayerModel.Score;

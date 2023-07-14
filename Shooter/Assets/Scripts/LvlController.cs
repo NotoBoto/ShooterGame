@@ -69,7 +69,7 @@ public class LvlController : MonoBehaviour
                 SpawnSlime();
                 if (_spawnCooldown > 0.1f)
                 {
-                    _spawnCooldown -= 0.0025f;
+                    _spawnCooldown -= 0.005f;
                 }
             }
         }
