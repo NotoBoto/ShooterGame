@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UpgradeController : MonoBehaviour
 {
     private PlayerController _player;
     private LvlController _lvlController;
+    private EventTrigger _eventTrigger;
 
     public int UpgradeType;
 
@@ -14,6 +16,14 @@ public class UpgradeController : MonoBehaviour
     {
         _player = FindObjectOfType<PlayerController>();
         _lvlController = FindObjectOfType<LvlController>();
+        _eventTrigger = GetComponent<EventTrigger>();
+        _eventTrigger.enabled = false;
+        Invoke("EventTrigger", 0.75f);
+    }
+
+    private void EventTrigger()
+    {
+        _eventTrigger.enabled = true;
     }
 
     public void Upgrade()

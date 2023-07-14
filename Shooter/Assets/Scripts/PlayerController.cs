@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
         PlayerModel.ShotCooldown = 3f;
         PlayerModel.Lvl = 0;
-        PlayerModel.Experience = 0f;
+        PlayerModel.Experience = 4f;
         PlayerModel.ArrowSpeed = 4f;
         PlayerModel.ArrowDamage = 1f;
         PlayerModel.ArrowPiercing = 1f;
